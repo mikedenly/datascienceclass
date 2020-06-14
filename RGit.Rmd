@@ -204,9 +204,9 @@ After configuring `Git`, go to [www.github.com](github.com) and create a free ac
 
 Github may ask you if you want to install their client software program. Most people don't use the Github client, so we won't be using it in this class. Instead, they use `GitBash` (Windows users) or the Shell (Mac users).
 
-## Associate Your SSH Key from `R` Studio with Github
+## Associate Your SSH Key from `R` Studio with your Github Account
 
-To avoid problems down the road, you will need to associate your `R` Studio SSH key (see above screen shots) with your GitHub account.
+To avoid problems down the road, you will need to associate your `R` Studio SSH key with your GitHub account.
 
 Recall that your SSH key is accessible under:
 
@@ -214,14 +214,14 @@ Recall that your SSH key is accessible under:
 knitr::include_graphics("images/associate1.png", dpi = 100)
 ```
 
-Then, click on "View Public Key", and copy it:
+Then, click on "View Public Key", and copy it so you can paste it later:
 ```{r, echo=FALSE}
 knitr::include_graphics("images/associate2.png", dpi = 100)
 ```
 
-Follow [this website](https://help.github.com/en/enterprise/2.15/user/articles/adding-a-new-ssh-key-to-your-github-account) to add your SSH key to Github. When doing so, I just called my key "R Studio".
+Follow [this website](https://help.github.com/en/enterprise/2.15/user/articles/adding-a-new-ssh-key-to-your-github-account) to add your SSH key to Github. When doing so, I just called my key "R Studio". 
 
-# Create a New Repository (repo) on GitHub 
+# Create a New Repository (repo) on GitHub and Initalize It
 
 We will want to store our work in a repository on GitHub. From Github, click on "New" under the "Repositories" tab:
 
@@ -247,12 +247,32 @@ knitr::include_graphics("images/repo_github3.png", dpi = 100)
 knitr::include_graphics("images/repo_github4.png", dpi = 100)
 ```
 
-Then, run the code suggested by GitHub.  to
+Then, run the above code suggested by GitHub in `Git Bash` (Windows Users) or the Shell (Mac users) to initialize your repository. 
+
+# The Basic `Git` commands
+
+You may be wondering what in the world those codes that you GitHub wanted you to run actually mean. Here are the very basic ones: 
+
+* `git init`
+  - This command initializes a repository. Basically, you need to tell the folder that you are working out of on your computer that it is now going to be a `Git`-enabled.
+* `git add`
+  - This command allows you to add files to the staging area. The latter is the place that your files go before you can get that them onto Github.
+* `git status`
+  - This command allows you to check which files have been added to the staging area--that is, the place you need to put your files before getting them on GitHub. For example, the screenshot below is of my repository for creating this module. I had previously added the "Rgit.Rmd" file to the staging area, but then I modified it, which is why it is above and in \textcolor{red}{red}. If I had saved "Rgit.Rmd" and then immediately added it to the staging area, then it would have been in \textcolor{green}{green}. I never added the untracked files  to the staging area, which is why they are where they are and are in \textcolor{red}{red}.
+```{r, echo=FALSE}
+knitr::include_graphics("images/staging_area.png", dpi = 100)
+```
+* `git commit -m "my descriptive message here"`
+  - This command commits a file, which is the second-to-last step before putting it on Github. Whenever you commit file, you always add a message with `-m "message"` to indicate exactly what you are doing. If you forget to include a message, `Git` will not allow you to proceed. Generally, you should keep your messages short but descriptive. This way, you and others can follow exactly what you did at a later point. Generally, whenever we commit, we add `-a` to our command, making it: `git commit -a -m "my descriptive message here"`. Doing that allows you to commit more than one file at a time. Otherwise, you would need to add each file individually, immediately commit them, and repeat. By adding the `-a` to our command, we can just add a bunch of files to the staging area, and commit them all with one step. If you use this course of action, though, make sure to keep your commit messages on point. If the files are not related, you probably don't want to commit them all at the same time, as that would make for very confusing commit messages.
+* `git push`
+  - This is the final command that you need to run in order to put the files on GitHub. Generally, you run `git push origin master`. What this means is that you are pushing the master (main) branch to GitHub. Naturally, your next question should be: what is a branch? And you may also be wondering: why in the world did I have to add the files to the staging area, commit them, and then push them? Don't these steps seem repeitive and unnecessary?
+  
+It turns out that these steps are all necessary, and branching is another benefit of `Git`. Recall the earlier example with Denly, Findley, and Charm working together on a final project that involves statistical analysis in `R`. If there were only two steps (adding to the staging area and pushing to GitHub), then there would be no way for all three to work on the same problem. 
 
 
-# Creating a Repository (Repo) in `R` Studio and Initializing It
+# Creating a Repository (Repo) in `R` Studio
 
-Now that we have `Git` set up and a repository on Github, we need to create a repository in `R` Studio as well. To do so, go to:
+Now that we have `Git` set up, we know the basic of `Git`, and we have initialized a repository for our project with help Github, we need to create a repository in `R` Studio as well. To do so, go to:
 
 ```{r, echo=FALSE}
 knitr::include_graphics("images/git_repo.png", dpi = 100)
@@ -263,7 +283,7 @@ Change the version control system to `Git`:
 knitr::include_graphics("images/git_repo2.png", dpi = 100)
 ```
 
-Indicate that you want to initialize a new `Git` repository, but note that we are in a project right now. If you are using the working directory method, it may ask you fill out the "Origin" field:
+Since you already initialized your `Git` repo in a previous step (above), `R` Studio will know to change it to that `Git` repository. Note that if you want to the change repo that `R` Studio uses by default, you will need to initialize another repo, then `R` Studio will use that one.
 ```{r, echo=FALSE}
 knitr::include_graphics("images/git_repo3.png", dpi = 100)
 ```
