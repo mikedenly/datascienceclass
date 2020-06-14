@@ -238,7 +238,7 @@ And you will notice a new ".gitignore" file in your directory:
 knitr::include_graphics("images/git_repo6.png", dpi = 100)
 ```
 
-# The Basic Commands
+# The Basic Commands through Committing
 
 * `git init`
   - This is how you initialize a repository if you are not working in `R` Studio. You won't need the command in this course, but you will need to know it exists for later.
@@ -255,14 +255,40 @@ knitr::include_graphics("images/git_commit.png", dpi = 100)
 ```{r, echo=FALSE}
 knitr::include_graphics("images/git_commit2.png", dpi = 100)
 ```
+  - Make sure to click "Staged" if you have modified and saved your file in the meantime:
+```{r, echo=FALSE}
+knitr::include_graphics("images/git_commit3.png", dpi = 100)
+```
+  
   - Add your descriptive message in the top-right hand pane for what you did and click "Commit":
 ```{r, echo=FALSE}
-knitr::include_graphics("images/git_repo2.png", dpi = 100)
+knitr::include_graphics("images/git_commit4.png", dpi = 100)
 ```
-  - Then,   
+  - You will then see something like this:
+```{r, echo=FALSE}
+knitr::include_graphics("images/git_commit5.png", dpi = 100)
+```
+  
+  - After closing out, you will notice that the `RGit.rmd` file we were working with is no longer has been committed and thus is no longer on the staging area:
+```{r, echo=FALSE}
+knitr::include_graphics("images/git_commit6.png", dpi = 100)
+```
+   
+  - You can also see the commitment history related to that particular file by clicking on the "History" tab:
+```{r, echo=FALSE}
+knitr::include_graphics("images/git_commit7.png", dpi = 100)
+```
+
+# Pushing to Github
+
+After finishing with the commitment process, you need to "push" your commits to Github. 
 
 
-
+  
+  
+  
+  
+  
 # References
 
 Bryan, Jenny. 2019. "[Happy `Git` with `R`](https://happygitwithr.com/)."
