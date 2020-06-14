@@ -255,22 +255,26 @@ You may be wondering what in the world those codes that you GitHub wanted you to
 
 * `git init`
   - This command initializes a repository. Basically, you need to tell the folder that you are working out of on your computer that it is now going to be a `Git`-enabled.
+  
 * `git add`
   - This command allows you to add files to the staging area. The latter is the place that your files go before you can get that them onto Github.
+  
 * `git status`
   - This command allows you to check which files have been added to the staging area--that is, the place you need to put your files before getting them on GitHub. For example, the screenshot below is of my repository for creating this module. I had previously added the "Rgit.Rmd" file to the staging area, but then I modified it, which is why it is above and in \textcolor{red}{red}. If I had saved "Rgit.Rmd" and then immediately added it to the staging area, then it would have been in \textcolor{green}{green}. I never added the untracked files  to the staging area, which is why they are where they are and are in \textcolor{red}{red}.
 ```{r, echo=FALSE}
 knitr::include_graphics("images/staging_area.png", dpi = 100)
 ```
+
 * `git commit -m "my descriptive message here"`
   - This command commits a file, which is the second-to-last step before putting it on Github. Whenever you commit file, you always add a message with `-m "message"` to indicate exactly what you are doing. If you forget to include a message, `Git` will not allow you to proceed. Generally, you should keep your messages short but descriptive. This way, you and others can follow exactly what you did at a later point. Generally, whenever we commit, we add `-a` to our command, making it: `git commit -a -m "my descriptive message here"`. Doing that allows you to commit more than one file at a time. Otherwise, you would need to add each file individually, immediately commit them, and repeat. By adding the `-a` to our command, we can just add a bunch of files to the staging area, and commit them all with one step. If you use this course of action, though, make sure to keep your commit messages on point. If the files are not related, you probably don't want to commit them all at the same time, as that would make for very confusing commit messages.
+  
 * `git push`
   - This is the final command that you need to run in order to put the files on GitHub. Generally, you run `git push origin master`. What this means is that you are pushing the master (main) branch to GitHub. Naturally, your next question should be: what is a branch? And you may also be wondering: why in the world did I have to add the files to the staging area, commit them, and then push them? Don't these steps seem repeitive and unnecessary?
   
-It turns out that these steps are all necessary, and branching is another benefit of `Git`. Recall the earlier example with Denly, Findley, and Charm working together on a final project that involves statistical analysis in `R`. If there were only two steps (adding to the staging area and pushing to GitHub), then there would be no way for all three to work on the same problem. 
+It turns out that these steps are all necessary, and being able to use more than one branch is another benefit of `Git`. Recall the earlier example with Denly, Findley, and Charm working together on a final project that involves statistical analysis in `R`. To make the example more concrete, let's say they were all struggling with figuring out the code to run a some very complicated model--let's call it the Ninja model. Each were working off the same file but on different branches to ensure nothing got overwritten. Then, Charm figured out a solution to the first part of the problem, so he told Denly and Findley. They then executed a `git pull` (i.e. the opposite of `git push`) of Charm's branch to their local computers, took a look, and agreed. So, Charm pushed his file to the master branch via `git push origin master`. However, they still weren't done yet. After hours of work, Denly figured out a solution to the second part of the Ninja model, so Charm and Findley pulled Denly's code to their computers, and took a look. Charm understood what Denly did right away. But it took Findley so long to figure out Denly's code that, by the time Findley finally finished, Denly and Charm were already done with their parts of the paper, sipping cold drinks at the beach without access to a computer. Accordingly, Findley had to push Denly's code to the master branch. At least, in the end, Findley made a tiny contribution something to the project :)
 
 
-# Creating a Repository (Repo) in `R` Studio
+# Creating a Repository (repo) in `R` Studio
 
 Now that we have `Git` set up, we know the basic of `Git`, and we have initialized a repository for our project with help Github, we need to create a repository in `R` Studio as well. To do so, go to:
 
@@ -283,7 +287,7 @@ Change the version control system to `Git`:
 knitr::include_graphics("images/git_repo2.png", dpi = 100)
 ```
 
-Since you already initialized your `Git` repo in a previous step (above), `R` Studio will know to change it to that `Git` repository. Note that if you want to the change repo that `R` Studio uses by default, you will need to initialize another repo, then `R` Studio will use that one.
+Since you already initialized your `Git` repo in a previous step (above), `R` Studio will know to change it to that `Git` repository. Note that if you want to the change repo that `R` Studio uses by default, you will need to initialize another repo in `Git Bash` (Windows users) or Shell (Mac users). Then, `R` Studio will use that new repo.
 ```{r, echo=FALSE}
 knitr::include_graphics("images/git_repo3.png", dpi = 100)
 ```
@@ -303,23 +307,9 @@ And you will notice a new ".gitignore" file in your directory:
 knitr::include_graphics("images/git_repo6.png", dpi = 100)
 ```
 
+# Using `R` Studio to Push Files to GitHub
 
-
-
-
-
-
-
-# The Basic Commands through Committing
-
-* `git init`
-  - This is how you initialize a repository if you are not working in `R` Studio. You won't need the command in this course, but you will need to know it exists for later.
-* `git status`
-  - Check which files are added to the staging area--that is, the place you need to put your files before getting them on GitHub. In `R` Studio, there is a "Staged" button, which makes it really easy to figure out which files are in the staging area. However, if you are working outside `R` Studio, `git status` is a command that you will be using all of the time.
-* `git add filename.extension`
-  - Add a specific file to the staging area. In `R` Studio, you add a file to the staging area by simply clicking on "Staged" next to the file. Outside of `R` Studio, you will run `git add filename.extension` all of the time.
-* `git commit -a -m "description message of what you did here"`
-  - Commiting a file is the second-to-last step before putting it on Github. Whenever you commit file, you always add a message to indicate exactly what you are doing. In `R` Studio, you can just click on the "Commit" icon after adding your file to the staging area:
+The `Git` pane in `R` Studio allows you to run `git add` and `git status` really easily. Notably, you just click on the "Staged" button to add something to the staging area. Files that aren't "Staged" are simply not in the staging area. To do the equivalent of `git commit`, you can just click on the "Commit" icon after adding your file to the staging area:
 ```{r, echo=FALSE}
 knitr::include_graphics("images/git_commit.png", dpi = 100)
 ```
@@ -341,7 +331,7 @@ knitr::include_graphics("images/git_commit4.png", dpi = 100)
 knitr::include_graphics("images/git_commit5.png", dpi = 100)
 ```
   
-  - After closing out, you will notice that the `RGit.rmd` file we were working with is no longer has been committed and thus is no longer on the staging area:
+  - After closing out, you will notice that the `RGit.rmd` file we were working has been committed and thus is no longer on the staging area:
 ```{r, echo=FALSE}
 knitr::include_graphics("images/git_commit6.png", dpi = 100)
 ```
@@ -351,6 +341,7 @@ knitr::include_graphics("images/git_commit6.png", dpi = 100)
 knitr::include_graphics("images/git_commit7.png", dpi = 100)
 ```
 
+  - To push the 
 # Pushing to Github
 
 After finishing with the commitment process, you have successfully stored everything on your local computer. That's a great first step, but now you want to get everything onto Github through a "push". To be able to get there, you need to take care of a few things:
