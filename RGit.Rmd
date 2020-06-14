@@ -205,9 +205,9 @@ After configuring `Git`, go to [www.github.com](github.com) and create a free ac
 
 Github may ask you if you want to install their client software program. Most people don't use the Github client, so we won't be using it in this class. Instead, they use `GitBash` (Windows users) or the Shell (Mac users).
 
-# Initializing Repository (Repo) in `R` Studio
+# Creating a Repository (Repo) in `R` Studio
 
-Now that we have everything set up, we need to initialize a repository. To do so, go to:
+Now that we have `Git` set up, we need to create a repository in `R` Studio. To do so, go to:
 
 ```{r, echo=FALSE}
 knitr::include_graphics("images/git_repo.png", dpi = 100)
@@ -237,6 +237,33 @@ And you will notice a new ".gitignore" file in your directory:
 ```{r, echo=FALSE}
 knitr::include_graphics("images/git_repo6.png", dpi = 100)
 ```
+
+# Initializing a Repository on GitHub and Linking it Locally
+
+Unfortunately, doing everything locally on `R` Studio is not enough to link everything with GitHub. To get started, log on to GitHub. Then, click on "New" under the "Repositories" tab:
+
+```{r, echo=FALSE}
+knitr::include_graphics("images/repo_github1.png", dpi = 100)
+```
+
+It will bring you to a page like the one below. I just called my repository "datascienceclass". Like with your username, avoid spaces, special characters, upper-case letters, etc.
+
+```{r, echo=FALSE}
+knitr::include_graphics("images/repo_github2.png", dpi = 100)
+```
+
+After you create your repository, Github will provide you with some code to help you get your repository initalized.
+
+```{r, echo=FALSE}
+knitr::include_graphics("images/repo_github3.png", dpi = 100)
+```
+
+Since we created the repo on Github, we will use the second option, "…or push an existing repository from the command line". To do so, go to `Git Bash` (Windows users) or the Shell (Mac users), and run your code. In my case, it looks as follows:
+
+
+
+
+
 
 # The Basic Commands through Committing
 
@@ -281,7 +308,9 @@ knitr::include_graphics("images/git_commit7.png", dpi = 100)
 
 # Pushing to Github
 
-After finishing with the commitment process, you need to "push" your commits to Github. 
+After finishing with the commitment process, you have successfully stored everything on your local computer. That's a great first step, but now you want to get everything onto Github through a "push". To be able to get there, you need to take care of a few things:
+
+
 
 
   
