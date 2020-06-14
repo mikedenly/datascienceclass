@@ -164,7 +164,7 @@ Once you've done all of that, you should be able to finish the installation.
 knitr::include_graphics("images/Mac-Download-6.png", dpi = 450)
 ```
 
-If you get a version #, just double check to be sure it's the latest. If you want to, go ahead and download the latest version. You can use an older version but you don't want to get too far out of date. You might need to restart your computer, then go to terminal (same steps as above) and check the version.
+If you get a version #, just double check to be sure it's the latest. If you want to, go ahead and download the latest version. You can use an older version, but you don't want to get too far out of date. You might need to restart your computer, then go to terminal (same steps as above) and check the version.
 
 ## Configure `Git` and Generate an SSH Key
 
@@ -265,13 +265,16 @@ You may be wondering what in the world those codes that you GitHub wanted you to
 knitr::include_graphics("images/staging_area.png", dpi = 100)
 ```
 
+* `git diff`
+  - This command allows you to compare the changes that have been made since the file was previously added or committed.
+
 * `git commit -m "my descriptive message here"`
   - This command commits a file, which is the second-to-last step before putting it on Github. Whenever you commit file, you always add a message with `-m "message"` to indicate exactly what you are doing. If you forget to include a message, `Git` will not allow you to proceed. Generally, you should keep your messages short but descriptive. This way, you and others can follow exactly what you did at a later point. Generally, whenever we commit, we add `-a` to our command, making it: `git commit -a -m "my descriptive message here"`. Doing that allows you to commit more than one file at a time. Otherwise, you would need to add each file individually, immediately commit them, and repeat. By adding the `-a` to our command, we can just add a bunch of files to the staging area, and commit them all with one step. If you use this course of action, though, make sure to keep your commit messages on point. If the files are not related, you probably don't want to commit them all at the same time, as that would make for very confusing commit messages.
   
 * `git push`
   - This is the final command that you need to run in order to put the files on GitHub. Generally, you run `git push origin master`. What this means is that you are pushing the master (main) branch to GitHub. Naturally, your next question should be: what is a branch? And you may also be wondering: why in the world did I have to add the files to the staging area, commit them, and then push them? Don't these steps seem repeitive and unnecessary?
   
-It turns out that these steps are all necessary, and being able to use more than one branch is another benefit of `Git`. Recall the earlier example with Denly, Findley, and Charm working together on a final project that involves statistical analysis in `R`. To make the example more concrete, let's say they were all struggling with figuring out the code to run a some very complicated model--let's call it the Ninja model. Each were working off the same file but on different branches to ensure nothing got overwritten. Then, Charm figured out a solution to the first part of the problem, so he told Denly and Findley. They then executed a `git pull` (i.e. the opposite of `git push`) of Charm's branch to their local computers, took a look, and agreed. So, Charm pushed his file to the master branch via `git push origin master`. However, they still weren't done yet. After hours of work, Denly figured out a solution to the second part of the Ninja model, so Charm and Findley pulled Denly's code to their computers, and took a look. Charm understood what Denly did right away. But it took Findley so long to figure out Denly's code that, by the time Findley finally finished, Denly and Charm were already done with their parts of the paper, sipping cold drinks at the beach without access to a computer. Accordingly, Findley had to push Denly's code to the master branch. At least, in the end, Findley made a tiny contribution something to the project :)
+It turns out that these steps are all necessary, and being able to use more than one branch is another benefit of `Git`. Recall the earlier example with Denly, Findley, and Charm working together on a final project that involves statistical analysis in `R`. To make the example more concrete, let's say they were all struggling with figuring out the code to run a some very complicated model--let's call it the Ninja model. Each were working off the same file but on different branches to ensure nothing got overwritten. Then, Charm figured out a solution to the first part of the problem, so he told Denly and Findley. They then executed a `git pull` (i.e. the opposite of `git push`) of Charm's branch to their local computers, took a look at the changes using a `git diff`, and agreed with Charm. So, Charm pushed his file to the master branch via `git push origin master`. However, they still weren't done yet. After hours of work, Denly figured out a solution to the second part of the Ninja model, so Charm and Findley pulled Denly's code to their computers, and took a look. Charm understood what Denly did right away. But it took Findley so long to figure out Denly's code that, by the time Findley finally finished, Denly and Charm were already done with their parts of the paper, sipping cold drinks at the beach without access to a computer. Accordingly, Findley had to push Denly's code to the master branch. At least, in the end, Findley made a tiny contribution something to the project :)
 
 
 # Creating a Repository (repo) in `R` Studio
@@ -341,10 +344,17 @@ knitr::include_graphics("images/git_commit6.png", dpi = 100)
 knitr::include_graphics("images/git_commit7.png", dpi = 100)
 ```
 
-  - To push the 
-# Pushing to Github
+  - To push the file to Github, click on the Green up arrow or select "Push Branch" from the Git menu:
+```{r, echo=FALSE}
+knitr::include_graphics("images/push1.png", dpi = 100)
+```
 
-After finishing with the commitment process, you have successfully stored everything on your local computer. That's a great first step, but now you want to get everything onto Github through a "push". To be able to get there, you need to take care of a few things:
+```{r, echo=FALSE}
+knitr::include_graphics("images/push2.png", dpi = 100)
+```
+    
+As should be clear, `R` Studio makes putting files on Github a little easier. However, you can still do things the old-fashioned way with running commands in `Git Bash` (Windows users) or the Shell (Mac users). Denly generally uses `Git Bash` for everything so that he does not forget all of the commands. Whichever way you choose is completely up to you.
+
 
 
 
