@@ -198,16 +198,61 @@ Then, ensure your SSH-key is enabled, and add it in `GitBash`:
 knitr::include_graphics("images/ssh_key5.png", dpi = 100)
 ```
 
-
-## Create a Github account
+## Create a Github Account
 
 After configuring `Git`, go to [www.github.com](github.com) and create a free account, using the same email address. (Note: you can also sign up for Github before, but just make everything is done with the same email address.) The free account is totally fine for our purposes. Because this account will be public and you will want to reference it later, it is generally better to create a username with your name in it. Bryan (2019) recommends that you keep your Github name the same as your Twitter name, etc. for consistency. That's probably a good idea. Additionally, you'll probably want to ensuring that the username is professional-sounding and is in all lower case.
 
 Github may ask you if you want to install their client software program. Most people don't use the Github client, so we won't be using it in this class. Instead, they use `GitBash` (Windows users) or the Shell (Mac users).
 
-# Creating a Repository (Repo) in `R` Studio
+## Associate Your SSH Key from `R` Studio with Github
 
-Now that we have `Git` set up, we need to create a repository in `R` Studio. To do so, go to:
+To avoid problems down the road, you will need to associate your `R` Studio SSH key (see above screen shots) with your GitHub account.
+
+Recall that your SSH key is accessible under:
+
+```{r, echo=FALSE}
+knitr::include_graphics("images/associate1.png", dpi = 100)
+```
+
+Then, click on "View Public Key", and copy it:
+```{r, echo=FALSE}
+knitr::include_graphics("images/associate2.png", dpi = 100)
+```
+
+Follow [this website](https://help.github.com/en/enterprise/2.15/user/articles/adding-a-new-ssh-key-to-your-github-account) to add your SSH key to Github. When doing so, I just called my key "R Studio".
+
+# Create a New Repository (repo) on GitHub 
+
+We will want to store our work in a repository on GitHub. From Github, click on "New" under the "Repositories" tab:
+
+```{r, echo=FALSE}
+knitr::include_graphics("images/repo_github1.png", dpi = 100)
+```
+
+It will bring you to a page like the one below. I just called my repository "datascienceclass". Like with your username, avoid spaces, special characters, upper-case letters, etc.
+
+```{r, echo=FALSE}
+knitr::include_graphics("images/repo_github2.png", dpi = 100)
+```
+
+After you create your repository, Github will provide you with some code to help you get your repository initalized:
+
+```{r, echo=FALSE}
+knitr::include_graphics("images/repo_github3.png", dpi = 100)
+```
+
+*Before* running the bit of code, "…or create a new repository on the command line", you will first need to change your directory. To do so, go to `Git Bash` (Windows Users) or the Shell (Mac users), and change your directory with "cd " to the folder that you are using for these respective files. 
+
+```{r, echo=FALSE}
+knitr::include_graphics("images/repo_github4.png", dpi = 100)
+```
+
+Then, run the code suggested by GitHub.  to
+
+
+# Creating a Repository (Repo) in `R` Studio and Initializing It
+
+Now that we have `Git` set up and a repository on Github, we need to create a repository in `R` Studio as well. To do so, go to:
 
 ```{r, echo=FALSE}
 knitr::include_graphics("images/git_repo.png", dpi = 100)
@@ -238,27 +283,7 @@ And you will notice a new ".gitignore" file in your directory:
 knitr::include_graphics("images/git_repo6.png", dpi = 100)
 ```
 
-# Initializing a Repository on GitHub and Linking it Locally
 
-Unfortunately, doing everything locally on `R` Studio is not enough to link everything with GitHub. To get started, log on to GitHub. Then, click on "New" under the "Repositories" tab:
-
-```{r, echo=FALSE}
-knitr::include_graphics("images/repo_github1.png", dpi = 100)
-```
-
-It will bring you to a page like the one below. I just called my repository "datascienceclass". Like with your username, avoid spaces, special characters, upper-case letters, etc.
-
-```{r, echo=FALSE}
-knitr::include_graphics("images/repo_github2.png", dpi = 100)
-```
-
-After you create your repository, Github will provide you with some code to help you get your repository initalized.
-
-```{r, echo=FALSE}
-knitr::include_graphics("images/repo_github3.png", dpi = 100)
-```
-
-Since we created the repo on Github, we will use the second option, "…or push an existing repository from the command line". To do so, go to `Git Bash` (Windows users) or the Shell (Mac users), and run your code. In my case, it looks as follows:
 
 
 
