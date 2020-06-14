@@ -1,0 +1,271 @@
+---
+title: "`R` and Git(hub)"
+author: 
+- "Michael G. Findley^[Professor, Department of Government, UT Austin, mikefindley@utexas.edu]"
+- "Michael Denly^[PhD Candidate, Department of Government, UT Austin, mdenly@utexas.edu]"
+output: 
+  pdf_document: default
+  keep_tex: yes
+toc: true
+number_sections: true
+header-includes:
+  - \usepackage{multicol}
+fontsize: 12pt
+colortheme: dove
+urlcolor: blue
+---
+
+\newpage
+
+# What is `Git` and Why Use It?
+
+`Git` is a version control system for file management and collaboration. Github is the most common user interface/program for `Git`. It allows people to collaborate or track changes in ways that Dropbox or Microsoft Word cannot. 
+
+To better understand the power of `Git`, let's use an example. Let's say that you are working on a group project with 5 students for a final paper that requires statistical analysis with `R`. 
+
+For your final paper, you have a couple options. First, you could use a Microsoft Word document. The nice part about Microsoft Word is the track changes feature, which most of you know how to use. However, only one person could work on that Word Document at a time. Maybe all team members write different sections and combine them later, but that would be annoying. Therefore, you would probably use a Google Doc--or Overleaf if you needed to work in LaTeX. With Google Docs' new "suggested edits" feature plus the version history, you could work rather seemlessly for writing, accepting changes as you go. Just the same, accepting the individual suggested edits one-by-one is tedious. 
+
+For the `R` part, there is no suggested edits or track changes feature. If Findley, Denly, and Charm were the team members responsible for the `R` part of the final paper, and none of them knew how to use `Git`, each would (a) have to work off separate files and tediously combine them all later; or (b) work off the same file but constantly be in touch over email/text message to ensure that none of them was in the file at the same time to prevent overwriting each others' work. 
+
+If Denly, Findley, and Charm had Github accounts and `Git` installed on their computers, then they would have none of these problems. They could easily work off the same file; create branches to separate their work; use a `diff` command to compare each person's changes in each branch against the most updated version of the file; commit the correct answers to the master branch/file; and push their changes to Github. The latter, in turn, could be linked with a folder on their computers, and Github would easily keep track of the different version of the file. In the case where Findley messed everything up, it would be no problem at all. Denly or Charm could easily restore the `R` script back to a previous version. Github keeps a complete record of all the files that were pushed to its server. 
+
+`Git` is not only useful for `R`, too. You can use it with Python, Stata, Matlab, LaTeX, etc. Denly also created [his website](www.mikedenly.com) for free using [GitHub pages](https://pages.github.com/). What did he did was fork (i.e. copy) a template created by someone else directly to his Github account. Then, Denly customized his website using the Markdown language that Professor Findley taught us in the previous submodule. Denly pays nothing for his website--besides 12 dollars per year to Google for the [www.mikedenly.com](www.mikedenly.com) domain name. By contrast, services like Weebly and Wix charge $10-20 per month to host a normal website. Because Denly's website is linked with Github, he can also track the file histories and restore to previous versions, if he wishes. For example, below is the [publicly-accessible commit history](https://github.com/mikedenly/mikedenly.github.io/commits/master/_teaching/data-science-course.md) associated with the [teaching page](https://mikedenly.com/teaching/) on Denly's website: 
+
+```{r, echo=FALSE}
+knitr::include_graphics("images/history_course.png", dpi = 100)
+```
+
+Because Denly wrote the page in Markdown, we can also see a [tracked history](https://github.com/mikedenly/mikedenly.github.io/commit/55deda8f188b3f7abe2ccba3203998d867279be2#diff-3f62aacd6b8f3569ad02170694bf71d4) of the changes that he made 7 days ago to the syllabus' introductory paragraph:
+
+```{r, echo=FALSE}
+knitr::include_graphics("images/history_course2.png", dpi = 100)
+```
+
+
+# Getting Started with `Git`, (Potentially) `GitBash`, and Github
+
+
+## Setting up `Git` and `GitBash` on Windows
+
+Nowadays, it possible to install `Git` and `GitBash` together. To do so, go to [https://git-scm.com/downloads](https://git-scm.com/downloads) and install `Git` for your respective operating system. If you are wondering about the 32-bit or 64-bit distinction, it depends on the operating system that your computer is using. The 32-bit system is a bit slower, but it will still work on a 64-bit computer. Where to find what operating system you have depends on your computer, so we would suggest Googling accordingly.
+
+The actual installation is a bit complicated, so we will provide screen shots below. 
+
+```{r, echo=FALSE}
+knitr::include_graphics("images/git_license.png", dpi = 100)
+```
+
+
+```{r, echo=FALSE}
+knitr::include_graphics("images/git_location.png", dpi = 100)
+```
+
+
+```{r, echo=FALSE}
+knitr::include_graphics("images/git_components.png", dpi = 100)
+```
+
+
+```{r, echo=FALSE}
+knitr::include_graphics("images/git_start.png", dpi = 100)
+```
+
+
+```{r, echo=FALSE}
+knitr::include_graphics("images/git_editor.png", dpi = 100)
+```
+
+
+```{r, echo=FALSE}
+knitr::include_graphics("images/git_path.png", dpi = 100)
+```
+
+
+```{r, echo=FALSE}
+knitr::include_graphics("images/git_line.png", dpi = 100)
+```
+
+
+```{r, echo=FALSE}
+knitr::include_graphics("images/git_emulator.png", dpi = 100)
+```
+
+
+```{r, echo=FALSE}
+knitr::include_graphics("images/git_pull.png", dpi = 100)
+```
+
+
+```{r, echo=FALSE}
+knitr::include_graphics("images/git_extra.png", dpi = 100)
+```
+
+
+```{r, echo=FALSE}
+knitr::include_graphics("images/git_exper.png", dpi = 100)
+```
+
+## Setting up `Git` on a Mac
+
+`Git` comes preinstalled on Mac, but you should check to see whether you have the latest version. First open the terminal:
+
+- Click on magnifying glass in top right and then type "terminal"
+- Or do `Cmd+Space bar` and type "terminal"
+
+See screenshot here for where you'd do this. You should be pretty familiar already with the spotlight function:
+
+```{r, echo=FALSE}
+knitr::include_graphics("images/spotlight.png", dpi = 400)
+```
+
+
+In terminal, type: `git --version`. See screenshot:
+
+```{r, echo=FALSE}
+knitr::include_graphics("images/mac-terminal-check.png", dpi = 300)
+```
+
+If nothing appears, then you don't have it. This could occur on an old Mac. If you don't have it, then go to the git download page linked [[here]](https://git-scm.com/downloads)
+
+```{r, echo=FALSE}
+knitr::include_graphics("images/Mac-Download-1.png", dpi = 500)
+```
+
+A few screenshots show you where to go from here. 
+
+First, when you click the download page, you'll get four options. The easiest is to choose 2.23.0 under the Binary Installer option.
+
+```{r, echo=FALSE}
+knitr::include_graphics("images/Mac-Download-2.png", dpi = 400)
+```
+
+You should download that and then the following will appear. Double click on the .pkg icon and then follow the steps.
+
+
+```{r, echo=FALSE}
+knitr::include_graphics("images/Mac-Download-3.png", dpi = 400)
+```
+
+Note that your computer might be configured to deny access to files like this. 
+
+```{r, echo=FALSE}
+knitr::include_graphics("images/Mac-Download-4.png", dpi = 450)
+```
+
+So you may need to go into Settings. The **Gear** icon in your toolbar. Then click on **Security and Privacy**. Then click on **General**. And then enable from the prompt at the bottom.
+
+```{r, echo=FALSE}
+knitr::include_graphics("images/Mac-Download-5.png", dpi = 450)
+```
+
+Once you've done all of that, you should be able to finish the installation.
+
+```{r, echo=FALSE}
+knitr::include_graphics("images/Mac-Download-6.png", dpi = 450)
+```
+
+If you get a version #, just double check to be sure it's the latest. If you want to, go ahead and download the latest version. You can use an older version but you don't want to get too far out of date. You might need to restart your computer, then go to terminal (same steps as above) and check the version.
+
+## Configure `Git` and Generate an SSH Key
+
+Open `Gitbash` (Windows users) or the Shell (Mac users), and configure `Git` with *your* username and email (**NOT MIKE DENLY!**):
+
+```{r, echo=FALSE}
+knitr::include_graphics("images/git_config_user.png", dpi = 100)
+```
+
+Then, setup an SSH key so that you don't have to type in your password every time that you do something on `Git`. Trust us that you really want to setup an SSH key, because entering in your password over and over again is not fun:
+
+```{r, echo=FALSE}
+knitr::include_graphics("images/ssh_key.png", dpi = 100)
+```
+
+```{r, echo=FALSE}
+knitr::include_graphics("images/ssh_key2.png", dpi = 100)
+```
+
+```{r, echo=FALSE}
+knitr::include_graphics("images/ssh_key3.png", dpi = 100)
+```
+
+Don't forget to click "Apply" and "OK":
+```{r, echo=FALSE}
+knitr::include_graphics("images/ssh_key4.png", dpi = 100)
+```
+
+Then, ensure your SSH-key is enabled, and add it in `GitBash`:
+```{r, echo=FALSE}
+knitr::include_graphics("images/ssh_key5.png", dpi = 100)
+```
+
+
+## Create a Github account
+
+After configuring `Git`, go to [www.github.com](github.com) and create a free account, using the same email address. (Note: you can also sign up for Github before, but just make everything is done with the same email address.) The free account is totally fine for our purposes. Because this account will be public and you will want to reference it later, it is generally better to create a username with your name in it. Bryan (2019) recommends that you keep your Github name the same as your Twitter name, etc. for consistency. That's probably a good idea. Additionally, you'll probably want to ensuring that the username is professional-sounding and is in all lower case.
+
+Github may ask you if you want to install their client software program. Most people don't use the Github client, so we won't be using it in this class. Instead, they use `GitBash` (Windows users) or the Shell (Mac users).
+
+# Initializing Repository (Repo) in `R` Studio
+
+Now that we have everything set up, we need to initialize a repository. To do so, go to:
+
+```{r, echo=FALSE}
+knitr::include_graphics("images/git_repo.png", dpi = 100)
+```
+
+Change the version control system to `Git`:
+```{r, echo=FALSE}
+knitr::include_graphics("images/git_repo2.png", dpi = 100)
+```
+
+Indicate that you want to initialize a new `Git` repository, but note that we are in a project right now. If you are using the working directory method, it may ask you fill out the "Origin" field:
+```{r, echo=FALSE}
+knitr::include_graphics("images/git_repo3.png", dpi = 100)
+```
+
+Restart your `R` Studio when it asks you:
+```{r, echo=FALSE}
+knitr::include_graphics("images/git_repo4.png", dpi = 100)
+```
+
+After restarting, you will see a new pane in the upper-right portion of the screen that will allow you to run the basic `Git` commands:
+```{r, echo=FALSE}
+knitr::include_graphics("images/git_repo5.png", dpi = 100)
+```
+
+And you will notice a new ".gitignore" file in your directory:
+```{r, echo=FALSE}
+knitr::include_graphics("images/git_repo6.png", dpi = 100)
+```
+
+# The Basic Commands
+
+* `git init`
+  - This is how you initialize a repository if you are not working in `R` Studio. You won't need the command in this course, but you will need to know it exists for later.
+* `git status`
+  - Check which files are added to the staging area--that is, the place you need to put your files before getting them on GitHub. In `R` Studio, there is a "Staged" button, which makes it really easy to figure out which files are in the staging area. However, if you are working outside `R` Studio, `git status` is a command that you will be using all of the time.
+* `git add filename.extension`
+  - Add a specific file to the staging area. In `R` Studio, you add a file to the staging area by simply clicking on "Staged" next to the file. Outside of `R` Studio, you will run `git add filename.extension` all of the time.
+* `git commit -a -m "description message of what you did here"`
+  - Commiting a file is the second-to-last step before putting it on Github. Whenever you commit file, you always add a message to indicate exactly what you are doing. In `R` Studio, you can just click on the "Commit" icon after adding your file to the staging area:
+```{r, echo=FALSE}
+knitr::include_graphics("images/git_commit.png", dpi = 100)
+```
+  - After clicking on "Commit", you will be brought to an area that looks like this:
+```{r, echo=FALSE}
+knitr::include_graphics("images/git_commit2.png", dpi = 100)
+```
+  - Add your descriptive message in the top-right hand pane for what you did and click "Commit":
+```{r, echo=FALSE}
+knitr::include_graphics("images/git_repo2.png", dpi = 100)
+```
+  - Then,   
+
+
+
+# References
+
+Bryan, Jenny. 2019. "[Happy `Git` with `R`](https://happygitwithr.com/)."
+
+Wickham, Hadley. 2019. "[`Git` and Github](http://r-pkgs.had.co.nz/git.html)."
+
